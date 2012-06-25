@@ -1,0 +1,44 @@
+
+require("session.js");
+require("new-tabs.js");
+
+// automatically load saved session on startup
+session_auto_save_auto_load = true;
+
+/* Python docs webjumps */
+define_webjump("py2", "http://docs.python.org/library/%s.html");
+define_webjump("py3", "http://docs.python.org/py3k/library/re.html");
+
+/* Other webjumps */
+define_webjump("gmail", "https://mail.google.com/");
+define_webjump("monit", "http://monit.greatnorthhosting.com/");
+define_webjump("i3bugs", "http://bugs.i3wm.org/report/report/2");
+define_webjump("i3faq", "http://faq.i3wm.org/questions/");
+define_webjump("admin", "http://greatnorthhosting.com/admin/");
+define_webjump("time", "https://app.liquidplanner.com/space/54138/timesheet");
+define_webjump("ticket", "http://helpdesk.streamon.fm/tech/");
+define_webjump("news", "http://news.ycombinator.com/");
+define_webjump("stream", "http://%s.streamon.fm/");
+
+
+/* Switch tabs with # keys */
+function define_switch_buffer_key (key, buf_num) {
+    define_key(default_global_keymap, key,
+               function (I) {
+                   switch_to_buffer(I.window,
+                                    I.window.buffers.get_buffer(buf_num));
+               });
+}
+for (let i = 0; i < 10; ++i) {
+    define_switch_buffer_key(String((i+1)%10), i);
+}
+
+/* default directory for downloads and shell commands */
+cwd = get_home_directory();
+cwd.append("downloads");
+
+/* automatically handle some mime types internally */
+content_handlers.set("application/pdf", content_handler_save);
+
+/* let xkcd-mode put the funny alt text into the page */
+xkcd_add_title = true;
