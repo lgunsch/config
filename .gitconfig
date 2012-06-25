@@ -1,0 +1,9 @@
+[user]
+	name = Lewis Gunsch
+	email = lewisgunsch@streamon.fm
+[color]
+	diff = true
+	grep = true
+[alias]
+#	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
