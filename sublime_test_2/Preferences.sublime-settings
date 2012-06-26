@@ -1,0 +1,19 @@
+{
+	"auto_complete_commit_on_tab": true,
+	"caret_style": "wide",
+	"color_scheme": "Packages/Color Scheme - Default/Solarized (Dark).tmTheme",
+	"font_face": "Monospace",
+	"font_size": 11.5,
+	"highligh_line": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"line_padding_bottom": 1,
+	"rulers":
+	[
+		80,
+		100
+	],
+	"translate_tabs_to_spaces": true
+}
