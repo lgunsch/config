@@ -19,7 +19,7 @@ urxvt*color15: #a020f0
 urxvt*transparent: true
 urxvt*shading: 40
 urxvt*fading: 40
-urxvt*font: xft:Bitstream\ Vera\ Sans\ Mono:style=roman:pixelsize=14
+urxvt*font: xft:Inconsolata:pixelsize=14
 urxvt*scrollBar: false
 urxvt*saveLines: 32768
 urxvt*pointerBlank: true
