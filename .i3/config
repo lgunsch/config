@@ -109,7 +109,7 @@ bindsym $mod+Shift+C reload
 bindsym $mod+Shift+R restart
 # exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+E exit
-bindsym $mod+Escape exit
+bindsym $mod+Shift+Escape exit
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
