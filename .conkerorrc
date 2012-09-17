@@ -11,13 +11,16 @@ define_webjump("py3", "http://docs.python.org/py3k/library/re.html");
 
 /* Other webjumps */
 define_webjump("gmail", "https://mail.google.com/");
+define_webjump("status", "https://secure.streamon.fm/admin/status.php");
 define_webjump("monit", "http://monit.greatnorthhosting.com/");
 define_webjump("i3bugs", "http://bugs.i3wm.org/report/report/2");
 define_webjump("i3faq", "http://faq.i3wm.org/questions/");
 define_webjump("admin", "http://greatnorthhosting.com/admin/");
+define_webjump("sowiki", "http://wiki.streamon.fm/index.php/Main_Page");
 define_webjump("time", "https://app.liquidplanner.com/space/54138/timesheet");
 define_webjump("ticket", "http://helpdesk.streamon.fm/tech/");
 define_webjump("news", "http://news.ycombinator.com/");
+define_webjump("lwn", "http://lwn.net/");
 define_webjump("stream", "http://%s.streamon.fm/");
 
 
@@ -42,3 +45,63 @@ content_handlers.set("application/pdf", content_handler_save);
 
 /* let xkcd-mode put the funny alt text into the page */
 xkcd_add_title = true;
+
+/* filename transformations */
+var replace_map = {
+    ".": {
+        "transformer": function (filename) {
+            return filename.replace( /[\W ]+/g   , "-"   )
+                           .replace( /^-+/       , ""    )
+                           .replace( /-+$/       , ""    )
+                           .replace( /-([^-]+)$/ , ".$1" )
+                           .toLowerCase();
+        }
+    }
+};
+function suggest_save_path_from_file_name (file_name, buffer) {
+    var cwd = with_current_buffer(buffer, function (I) I.local.cwd);
+    var file = cwd.clone();
+    for (let re in replace_map) {
+        if (file_name.match(re)) {
+            if (replace_map[re].path) {
+                file = make_file(replace_map[re].path);
+            }
+            file_name = replace_map[re].transformer(file_name);
+        }
+    }
+    file.append(file_name);
+    return file.path;
+}
+
+/* Pocket -- read it later */
+interactive("pocket", "Read it Later",
+                   function (I) {
+                            let posturl = 'https://getpocket.com/v2/add?username=lgunsch&password=lgparadox&apikey=0Z4A9y66d8cF2fMu42p9b46Zb8T2vqNq&url=' + I.buffer.display_uri_string + '&title=' + I.buffer.document.title;
+                            yield send_http_request(load_spec({uri: posturl}));
+                            I.window.minibuffer.message("Saved!");
+
+});
+
+define_key(default_global_keymap, "C-r", "pocket");
+
+interactive("open-pocket", "Go to Read It Later website", "follow", $browser_object = "http://www.getpocket.com/unread");
+
+define_key(default_global_keymap, "C-x r", "open-pocket");
+
+/* Tiny URL */
+define_browser_object_class(
+    "tinyurl", "Get a tinyurl for the current page",
+    function (I, prompt) {
+        check_buffer(I.buffer, content_buffer);
+        let createurl = 'http://tinyurl.com/api-create.php?url=' +
+            encodeURIComponent(
+                load_spec_uri_string(
+                    load_spec(I.buffer.top_frame)));
+        try {
+            var content = yield send_http_request(
+                load_spec({uri: createurl}));
+            yield co_return(content.responseText);
+        } catch (e) { }
+    });
+
+define_key(content_buffer_normal_keymap, "* q", "browser-object-tinyurl");
