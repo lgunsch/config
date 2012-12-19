@@ -1,0 +1,26 @@
+Alignment
+BracketHighlighter
+CoffeeScript
+Color Highlighter
+Dart
+Djaneiro
+GitGutter
+INI
+Package Control
+PlainTasks
+Print to HTML
+PythonTidy
+Rust
+SideBarEnhancements
+SideBarGit
+SublimeLinter
+Theme - Nexus
+Theme - Night
+Theme - Nil
+Theme - Phoenix
+Theme - Refined
+Theme - Refresh
+Theme - Soda
+TrailingSpaces
+Vala
+pastebin-sublime-plugin
