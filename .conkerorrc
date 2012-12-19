@@ -13,6 +13,7 @@ define_webjump("py3", "http://docs.python.org/py3k/library/re.html");
 define_webjump("gmail", "https://mail.google.com/");
 define_webjump("status", "https://secure.streamon.fm/admin/status.php");
 define_webjump("monit", "http://monit.greatnorthhosting.com/");
+define_webjump("nagios", "https://nagios.streamon.fm/nagios/");
 define_webjump("i3bugs", "http://bugs.i3wm.org/report/report/2");
 define_webjump("i3faq", "http://faq.i3wm.org/questions/");
 define_webjump("admin", "http://greatnorthhosting.com/admin/");
@@ -22,6 +23,7 @@ define_webjump("ticket", "http://helpdesk.streamon.fm/tech/");
 define_webjump("news", "http://news.ycombinator.com/");
 define_webjump("lwn", "http://lwn.net/");
 define_webjump("stream", "http://%s.streamon.fm/");
+define_webjump("freedcamp", "https://freedcamp.com/dashboard");
 
 
 /* Switch tabs with # keys */
