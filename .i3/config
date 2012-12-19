@@ -24,7 +24,7 @@ bindsym $mod+Return exec urxvt
 bindsym $mod+Shift+Q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec i3-dmenu-desktop
 
 # change focus
 bindsym $mod+n focus left
@@ -106,7 +106,6 @@ bindsym $mod+Shift+C reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+R restart
 # exit i3 (logs you out of your X session)
-#bindsym $mod+Shift+E exit
 bindsym $mod+Shift+Escape exit
 
 # resize window (you can also use the mouse for that)
@@ -164,3 +163,6 @@ bar {
 # Startup apps
 exec --no-startup-id parcellite
 exec --no-startup-id wicd-client
+exec --no-startup-id dropbox.py start
+
+# enable_alpha_channel yes
