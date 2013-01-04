@@ -2,6 +2,10 @@
 require("session.js");
 require("new-tabs.js");
 
+// fix focus stealing
+require("block-content-focus-change.js");
+block_content_focus_change_duration = 20;  // milliseconds
+
 // automatically load saved session on startup
 session_auto_save_auto_load = true;
 
@@ -24,6 +28,7 @@ define_webjump("news", "http://news.ycombinator.com/");
 define_webjump("lwn", "http://lwn.net/");
 define_webjump("stream", "http://%s.streamon.fm/");
 define_webjump("freedcamp", "https://freedcamp.com/dashboard");
+define_webjump("solve", "https://secure.solve360.com/");
 
 
 /* Switch tabs with # keys */
