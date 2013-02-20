@@ -24,7 +24,8 @@ bindsym $mod+Return exec urxvt
 bindsym $mod+Shift+Q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec i3-dmenu-desktop
+bindsym $mod+d exec dmenu_run
+bindsym $mod+p exec i3-dmenu-desktop
 
 # change focus
 bindsym $mod+n focus left
@@ -160,9 +161,15 @@ bar {
         status_command i3status
 }
 
+workspace_auto_back_and_forth yes
+
 # Startup apps
+exec --no-startup-id volumeicon
 exec --no-startup-id parcellite
 exec --no-startup-id wicd-client
 exec --no-startup-id dropbox.py start
+
+# Below should not be needed. It should be done by startx automatically
+# exec --no-startup-id unclutter -idle 1 -root
 
 # enable_alpha_channel yes
