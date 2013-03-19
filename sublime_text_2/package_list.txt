@@ -21,6 +21,5 @@ Theme - Phoenix
 Theme - Refined
 Theme - Refresh
 Theme - Soda
-TrailingSpaces
 Vala
 pastebin-sublime-plugin
