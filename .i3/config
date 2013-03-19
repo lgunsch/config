@@ -154,6 +154,9 @@ bindsym $mod+l exec i3lock -d -i /home/lgunsch/wallpapers/coloured-particles.png
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
+# Toggle the mouse to be enabled/disabled using a script
+bindsym $mod+b  exec --no-startup-id /home/lgunsch/.i3/mouse-banish.py '.*Razer  Razer Abyssus.*'
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
@@ -170,6 +173,6 @@ exec --no-startup-id wicd-client
 exec --no-startup-id dropbox.py start
 
 # Below should not be needed. It should be done by startx automatically
-# exec --no-startup-id unclutter -idle 1 -root
+exec --no-startup-id unclutter -idle 1 -root
 
 # enable_alpha_channel yes
