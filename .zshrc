@@ -4,26 +4,28 @@ autoload -Uz promptinit
 promptinit
 prompt adam1
 
+RPROMPT='[%U%*%u]'
+
 setopt histignorealldups sharehistory
 
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=5000
+SAVEHIST=5000
 HISTFILE=~/.zsh_history
 setopt APPEND_HISTORY
 
-export EDITOR="sublime"
+export EDITOR="nano"
 
 setopt NO_CLOBBER
 
 # Write after each command
-# setopt INC_APPEND_HISTORY
+setopt INC_APPEND_HISTORY
 
 # Killer: share history between multiple shells
-setopt SHARE_HISTORY
+# setopt SHARE_HISTORY
 
 # If I type cd and then cd again, only save the last one
 setopt HIST_IGNORE_DUPS
@@ -80,13 +82,13 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-alias ll='ls -l'
-alias la='ls -A'
+alias ll='ls -lh'
+alias la='ls -Ah'
 alias l='ls -CF'
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
-alias ll='ls -la'
+alias ll='ls -lah'
 
 alias bigmon='xrandr --output VGA1 --auto  --left-of LVDS1'
 alias todatasource='ssh -p 2022 lgunsch@datasource.streamon.fm'
@@ -100,6 +102,7 @@ eval "$(rbenv init -)"
 
 # Python environment
 source /etc/bash_completion.d/virtualenvwrapper
+[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
 
 # Perl CPAN
 export PERL_LOCAL_LIB_ROOT="/home/lgunsch/perl5";
@@ -107,3 +110,12 @@ export PERL_MB_OPT="--install_base /home/lgunsch/perl5";
 export PERL_MM_OPT="INSTALL_BASE=/home/lgunsch/perl5";
 export PERL5LIB="/home/lgunsch/perl5/lib/perl5/x86_64-linux-gnu-thread-multi:/home/lgunsch/perl5/lib/perl5";
 export PATH="/home/lgunsch/perl5/bin:$PATH";
+
+function wname() {
+    print -Pn "\e]2;%M: %~\a"
+}
+function chpwd() { wname }
+function precmd() { wname }
+
+export BROWSER='iceweasel'
+
