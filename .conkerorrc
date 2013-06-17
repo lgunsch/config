@@ -2,16 +2,26 @@
 require("session.js");
 require("new-tabs.js");
 
+session_pref("layout.spellcheckDefault", 1);
+
 // fix focus stealing
 require("block-content-focus-change.js");
-block_content_focus_change_duration = 20;  // milliseconds
+block_content_focus_change_duration = 120;  // milliseconds, default 20
 
 // automatically load saved session on startup
 session_auto_save_auto_load = true;
 
 /* Python docs webjumps */
-define_webjump("py2", "http://docs.python.org/library/%s.html");
-define_webjump("py3", "http://docs.python.org/py3k/library/re.html");
+define_webjump("py2", "http://docs.python.org/library/%s.html", $alternative="http://docs.python.org/2.7/library/index.html");
+define_webjump("py3", "http://docs.python.org/py3k/library/%s.html", $alternative="http://docs.python.org/3.3/library/index.html");
+
+/* Rust webjumps */
+define_webjump("rust6core", "http://static.rust-lang.org/doc/0.6/core/%s.html", $alternative="http://static.rust-lang.org/doc/0.6/core/index.html");
+define_webjump("rust6std", "http://static.rust-lang.org/doc/0.6/std/%s.html", $alternative="http://static.rust-lang.org/doc/0.6/std/index.html");
+
+/* Dart webjumps */
+define_webjump("dart", "http://api.dartlang.org/docs/releases/latest/%s.html", $alternative="http://api.dartlang.org/docs/releases/latest/index.html");
+
 
 /* Other webjumps */
 define_webjump("gmail", "https://mail.google.com/");
@@ -112,3 +122,6 @@ define_browser_object_class(
     });
 
 define_key(content_buffer_normal_keymap, "* q", "browser-object-tinyurl");
+
+/* Google Bookmarks
+require("/home/lgunsch/.conkeror-google-bookmarks.js") */
