@@ -9,10 +9,15 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+
+# This is a very interesting config here: https://raw.github.com/syl20bnr/config/master/.i3/config
+# It has a few different modes to use.
+
 set $mod Mod4
 
 # font for window titles. ISO 10646 = Unicode
-font xft:Bitstream Charter
+# font pango:Bitstream Charter 11
+font pango:Droid Serif 10.5
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -154,19 +159,26 @@ bindsym $mod+l exec i3lock -d -i /home/lgunsch/wallpapers/coloured-particles.png
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
+# Volume control
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 10%+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 10%- unmute
+bindsym XF86AudioMute exec amixer -q set Master toggle
+
+
 # Toggle the mouse to be enabled/disabled using a script
 bindsym $mod+b  exec --no-startup-id /home/lgunsch/.i3/mouse-banish.py '.*Razer  Razer Abyssus.*'
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-#        tray_output VGA1
-        status_command i3status
+#        tray_output DVI-I-1
+        status_command /home/lgunsch/bin/i3status.sh
 }
 
 workspace_auto_back_and_forth no
 
 # Startup apps
+exec --no-startup-id dunst
 exec --no-startup-id volumeicon
 exec --no-startup-id parcellite
 exec --no-startup-id wicd-client
