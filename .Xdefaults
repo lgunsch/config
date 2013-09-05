@@ -20,8 +20,12 @@ urxvt*transparent: true
 urxvt*shading: 40
 urxvt*fading: 40
 urxvt*font: xft:Inconsolata:pixelsize=14
-urxvt*scrollBar: false
-urxvt*saveLines: 32768
+urxvt*scrollBar: true
+urxvt*scrollBar_right: true
+#urxvt*scrollBar_floating: true
+#urxvt*scrollstyle: plain
+urxvt*thickness: 3
+urxvt*saveLines: 16384
 urxvt*pointerBlank: true
-urxvt*scrollWithBuffer: false
-#urxvt*scrollTtyOutput: false
+urxvt*scrollWithBuffer: true
+urxvt*scrollTtyOutput: false
