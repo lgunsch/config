@@ -29,3 +29,4 @@ urxvt*saveLines: 16384
 urxvt*pointerBlank: true
 urxvt*scrollWithBuffer: true
 urxvt*scrollTtyOutput: false
+urxvt*scrollTtyKeypress: true
