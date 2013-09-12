@@ -1,9 +1,8 @@
 {
-	"auto_complete_commit_on_tab": true,
 	"caret_style": "wide",
-	"color_scheme": "Packages/Color Scheme - Default/Solarized (Dark).tmTheme",
-	"font_face": "Monospace",
-	"font_size": 11.5,
+	"color_scheme": "Packages/Theme - Refined/Color Schemes/Monokai Refined.tmTheme",
+	"font_face": "Hermit",
+	"font_size": 10,
 	"highligh_line": true,
 	"ignored_packages":
 	[
