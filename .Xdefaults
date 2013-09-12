@@ -1,25 +1,30 @@
-urxvt*foreground: #f2f2f2
-urxvt*background: #101010
-urxvt*color0: #101010
-urxvt*color1: #f13a21
-urxvt*color2: #93f91d
-urxvt*color3: #ffd00a
-urxvt*color4: #004f9e
-urxvt*color5: #ec0048
-urxvt*color6: #2aa7e7
-urxvt*color7: #f2f2f2
-urxvt*color8: #1d202f
-urxvt*color9: #ff361e
-urxvt*color10: #ffc005
-urxvt*color11: #93ff00
-urxvt*color12: #0071ff
-urxvt*color13: #ef0051
-urxvt*color14: #4bb8fd
-urxvt*color15: #a020f0
+! Molokai theme
+URxvt*background: #141414
+URxvt*foreground: #d0d0d0
+URxvt*color0: #101010
+URxvt*color1: #960050
+URxvt*color2: #66aa11
+URxvt*color3: #c47f2c
+URxvt*color4: #30309b
+URxvt*color5: #7e40a5
+URxvt*color6: #3579a8
+URxvt*color7: #9999aa
+URxvt*color8: #303030
+URxvt*color9: #ff0090
+URxvt*color10: #80ff00
+URxvt*color11: #ffba68
+URxvt*color12: #5f5fee
+URxvt*color13: #bb88dd
+URxvt*color14: #4eb4fa
+URxvt*color15: #d0d0d0
+
 urxvt*transparent: true
 urxvt*shading: 40
 urxvt*fading: 40
-urxvt*font: xft:Inconsolata:pixelsize=14
+
+# urxvt*font: xft:Inconsolata:pixelsize=14
+urxvt*font: xft:Hermit:pixelsize=12.5
+
 urxvt*scrollBar: true
 urxvt*scrollBar_right: true
 #urxvt*scrollBar_floating: true
