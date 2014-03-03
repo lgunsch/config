@@ -1,12 +1,15 @@
 {
 	"caret_style": "wide",
-	"color_scheme": "Packages/Theme - Refined/Color Schemes/Monokai Refined.tmTheme",
+	"color_scheme": "Packages/Theme - Refined/Color Schemes/Tomorrow Night Refined.tmTheme",
+	"dartsdk_path": "/home/lgunsch/src/dart/dart-sdk",
 	"font_face": "Hermit",
 	"font_size": 10,
 	"highligh_line": true,
 	"ignored_packages":
 	[
-		"Vintage"
+		"Floobits",
+		"Vintage",
+		"Theme - Night"
 	],
 	"line_padding_bottom": 1,
 	"rulers":

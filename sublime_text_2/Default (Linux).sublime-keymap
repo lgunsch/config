@@ -1,83 +1,9 @@
 [
-	{ "keys": ["ctrl+b"], "command": "move", "args": {"by": "characters", "forward": false} },
-	{ "keys": ["ctrl+f"], "command": "move", "args": {"by": "characters", "forward": true} },
-	{ "keys": ["ctrl+p"], "command": "move", "args": {"by": "lines", "forward": false} },
-	{ "keys": ["ctrl+n"], "command": "move", "args": {"by": "lines", "forward": true} },
-	{ "keys": ["ctrl+a"], "command": "move_to", "args": {"to": "bol", "extend": false} },
-	{ "keys": ["ctrl+e"], "command": "move_to", "args": {"to": "eol", "extend": false} },
-	{ "keys": ["ctrl+d"], "command": "right_delete", "args": {"to": "eol", "extend": false} },
-	
-	{ "keys": ["ctrl+shift+d"], "command": "delete_word", "args": { "forward": true } },
-
-	{ "keys": ["ctrl+x", "k"], "command": "close"},
-	{ "keys": ["ctrl+x", "ctrl+f"], "command": "prompt_open_file"},
-  { "keys": ["ctrl+x", "ctrl+f", "enter"], "command": "prompt_open_file"},
-
-  { "keys": ["ctrl+x", "ctrl+space"], "command": "auto_complete" },
-  { "keys": ["ctrl+x", "ctrl+space"], "command": "replace_completion_with_auto_complete", "context":
-    [
-      { "key": "last_command", "operator": "equal", "operand": "insert_best_completion" },
-      { "key": "setting.tab_completion", "operator": "equal", "operand": true }
-    ]
-  },
-
-	 { "keys": ["ctrl+n"], "command": "move", "args": {"by": "lines", "forward": true, "extend": true}, "context":    
-    [
-      { "key": "setting.transient_mode_on", "operator": "equal", "operand": true }
-    ]
-  },
-  { "keys": ["ctrl+p"], "command": "move", "args": {"by": "lines", "forward": false, "extend": true}, "context":    
-    [
-      { "key": "setting.transient_mode_on", "operator": "equal", "operand": true }
-    ]
-  },
-  { "keys": ["ctrl+b"], "command": "move", "args": {"by": "characters", "forward": false, "extend": true}, "context":    
-    [
-      { "key": "setting.transient_mode_on", "operator": "equal", "operand": true }
-    ]
-  },
-  { "keys": ["ctrl+f"], "command": "move", "args": {"by": "characters", "forward": true, "extend": true}, "context":    
-    [
-      { "key": "setting.transient_mode_on", "operator": "equal", "operand": true }
-    ]
-  },
-  { "keys": ["ctrl+a"], "command": "move_to", "args": {"to": "hardbol"} },
-  { "keys": ["ctrl+a"], "command": "move_to", "args": {"to": "bol"}, "context":    
+    // Allow toggle between beginning of line and beginning of text
+    { "keys": ["ctrl+a"], "command": "move_to", "args": {"to": "hardbol"} },
+    { "keys": ["ctrl+a"], "command": "move_to", "args": {"to": "bol"}, "context":
     [
       { "key": "preceding_text", "operator": "regex_match", "operand": "^$", "match_all": true }
     ]
-  },
-  { "keys": ["ctrl+a"], "command": "move_to", "args": {"to": "hardbol", "extend": true}, "context":    
-    [
-      { "key": "setting.transient_mode_on", "operator": "equal", "operand": true }
-    ]
-  },
-  { "keys": ["ctrl+a"], "command": "move_to", "args": {"to": "bol", "extend": true}, "context":    
-    [
-      { "key": "setting.transient_mode_on", "operator": "equal", "operand": true },
-      { "key": "preceding_text", "operator": "regex_match", "operand": "^$", "match_all": true }
-    ]
-  },
-  { "keys": ["ctrl+e"], "command": "move_to", "args": {"to": "hardeol"} },
-  { "keys": ["ctrl+e"], "command": "move_to", "args": {"to": "hardeol", "extend": true}, "context":    
-    [
-      { "key": "setting.transient_mode_on", "operator": "equal", "operand": true }
-    ]
-  },
-  { "keys": ["ctrl+g"], "command": "local_cancel_mark" },
-  { "keys": ["ctrl+g"], "command": "hide_panel", "context":
-    [
-      { "key": "panel_visible", "operator": "equal", "operand": true }
-    ]
-  },
-  { "keys": ["ctrl+space"], "command": "local_set_mark" },
-  { "keys": ["ctrl+y"], "command": "local_yank" },
-  { "keys": ["ctrl+w"], "command": "expand_or_kill" },
-  { "keys": ["alt+w"], "command": "local_add_to_kill_ring" },
-  { "keys": ["ctrl+o"], "command": "insert_newline_after_cursor" },
-  { "keys": ["ctrl+l"], "command": "show_at_center" },
-  { "keys": ["ctrl+x", "ctrl+s"], "command": "save" },
-  { "keys": ["ctrl+x", "b"], "command": "show_overlay", "args": {"overlay": "goto", "show_files": true} },
-  { "keys": ["ctrl+s"], "command": "show_panel", "args": {"panel": "incremental_find", "reverse": false} },
-  { "keys": ["ctrl+r"], "command": "show_panel", "args": {"panel": "incremental_find", "reverse": true} }
+  }
 ]
