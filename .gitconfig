@@ -5,9 +5,9 @@
 	diff = true
 	grep = true
 [alias]
-#	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 	tip = log  -n 1 --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	up = "!git remote update -p; git merge --ff-only @{u}"
 
 [tig "bind"] 
 	generic = P find-previous
@@ -15,3 +15,6 @@
 	generic = E edit
 	generic = n move-down
 	generic = e move-up
+
+[push]
+	default = simple
