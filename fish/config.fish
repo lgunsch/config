@@ -1,6 +1,8 @@
 # Ruby environment
 rvm > /dev/null
 
+set -x GOPATH $HOME/gocode
+
 # Python Virtualenv wrapper
 . /home/lgunsch/.config/fish/virtualfish/virtual.fish
 . /home/lgunsch/.config/fish/virtualfish/auto_activation.fish
@@ -18,6 +20,9 @@ alias tocr2 'ssh -p 2022 lgunsch@chicago-r2.streamon.fm'
 alias topr1 'ssh -p 2022 lgunsch@phoenix-r1.streamon.fm'
 alias topr2 'ssh -p 2022 lgunsch@phoenix-r2.streamon.fm'
 
+alias rm 'rm -i'
+alias mv 'mv -i'
+alias cp 'cp -i'
 
 function set_django_config --on-event virtualenv_did_activate
     set name (basename $VIRTUAL_ENV)
