@@ -9,7 +9,6 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-
 # This is a very interesting config here: https://raw.github.com/syl20bnr/config/master/.i3/config
 # It has a few different modes to use.
 
@@ -22,8 +21,8 @@ font pango:Droid Serif 10.5
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec urxvt
+# start a terminal, bash is default to set up the env, then fish is exec'ed after.
+bindsym $mod+Return exec urxvt -e fish
 
 # kill focused window
 bindsym $mod+Shift+Q kill
@@ -36,7 +35,7 @@ bindsym $mod+p exec i3-dmenu-desktop
 bindsym $mod+n focus left
 bindsym $mod+e focus down
 bindsym $mod+i focus up
-#bindsym $mod+semicolon focus right
+# bindsym $mod+semicolon focus right
 bindsym $mod+o focus right
 
 # alternatively, you can use the cursor keys:
@@ -111,8 +110,23 @@ bindsym $mod+Shift+parenright move workspace 10
 bindsym $mod+Shift+C reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+R restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+Escape exit
+
+# exit, hibernate, etc...
+set $mode_system System  (l) lock, (Shift+l) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym Shift+l exec --no-startup-id i3exit logout, mode "default"
+    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Pause mode "$mode_system"
+bindsym $mod+Shift+Escape mode "$mode_system"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -160,11 +174,13 @@ bindsym $mod+Shift+l exec i3lock --dpms --tiling --image=/home/lgunsch/wallpaper
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
-# Volume control
+# Special keys
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 10%+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 10%- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
-
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 -time 100
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 -time 100
+bindsym Print exec scrot '%F_%T_$wx$h.png' -e 'mv $f ~/shots/'
 
 # Toggle the mouse to be enabled/disabled using a script
 bindsym $mod+b  exec --no-startup-id /home/lgunsch/.i3/mouse-banish.py '.*Razer  Razer Abyssus.*'
@@ -172,20 +188,41 @@ bindsym $mod+b  exec --no-startup-id /home/lgunsch/.i3/mouse-banish.py '.*Razer 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-#        tray_output DVI-I-1
-        status_command /home/lgunsch/bin/i3status.sh
+#        tray_output DP1
+        status_command i3status
+    colors {
+        background #002B36
+        statusline #eee8d5
+        separator #268BD2
+
+        # bar.class        border  backgr. text
+        focused_workspace #1c5766 #1c5766 #FDF6E3
+        active_workspace   #154c5a #154c5a #FDF6E3
+        active_workspace   #154c5a #073642 #FDF6E3
+        inactive_workspace #073642 #073642 #eee8d5
+        urgent_workspace   #DC322F0 #DC322F0 #FDF6E3
+    }
 }
 
 workspace_auto_back_and_forth no
 
 # Startup apps
 exec --no-startup-id dunst
-exec --no-startup-id volumeicon
-exec --no-startup-id parcellite
-exec --no-startup-id wicd-client
-exec --no-startup-id dropbox.py start
+exec_always --no-startup-id volumeicon
+exec_always --no-startup-id parcellite
+# exec_always --no-startup-id wicd-client
+exec_always --no-startup-id dropbox.py start
 
 # Below should not be needed. It should be done by startx automatically
 exec --no-startup-id unclutter -idle 1 -root
+exec --no-startup-id xset dpms 300
 
 # enable_alpha_channel yes
+
+# i3-theme variable is below
+# client.class          border  backgr. text    indicator
+client.focused          #268bd2 #268bd2 #fdf6e3 #34a1ea
+client.focused_inactive #516369 #516369 #fdf6e3 #657B83
+client.unfocused        #073642 #073642 #eee8d5 #073642
+client.urgent           #DC322F #DC322F #fdf6e3 #DC322F
+exec_always --no-startup-id xsetroot -solid "#073642"
