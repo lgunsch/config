@@ -18,37 +18,24 @@ else
     feh --no-xinerama --bg-tile ~/wallpapers/coloured-particles.jpg
 fi
 
-#xbacklight -set 50     # set LCD brightness to 50%
-#xsetroot -cursor_name left_ptr
-#xmodmap -e "keycode 134 = Multi_key"
+# xbacklight -set 50     # set LCD brightness to 50%
+# xsetroot -cursor_name left_ptr
+# xmodmap -e "keycode 134 = Multi_key"
 
 # SCIM Setup
-#export XMODIFIERS=@im=SCIM
-#export GTK_IM_MODULE="scim"
-
-#scim -d 
-#mpd ~/.mpd/mpd.conf
-#ck-launch-session nm-applet --sm-disable &
-
-# Exec i3
-#stalonetray &
-#(sleep 1s && conky -c ~/.conkyrc_i3 | dzen2 -bg black -fg white -fn -windows-montecarlo-medium-*-*--11-
-#*-*-*-*-*-*-* -p -w 500 -h 18 -x 700 -y 0 -ta r ) & 
-#exec ~/i3/i3
-
-
-
+# export XMODIFIERS=@im=SCIM
+# export GTK_IM_MODULE="scim"
 
 # Disable DPMS turning off the screen
-xset -dpms
-xset s off
+# xset -dpms
+# xset s off
 
 # Disable bell
-xset -b
+# xset -b
 
 # Enable zapping (C-A-<Bksp> kills X)
-#setxkbmap us -variant colemak -option terminate:ctrl_alt_bksp
-setxkbmap -option terminate:ctrl_alt_bksp
+# setxkbmap us -variant colemak -option terminate:ctrl_alt_bksp
+# setxkbmap -option terminate:ctrl_alt_bksp
 
 # Enforce correct locales from the beginning
 unset LC_COLLATE
@@ -65,7 +52,7 @@ export LC_MEASUREMENT=en_CA.UTF-8
 export LC_IDENTIFICATION=en_CA.UTF-8
 
 # Use XToolkit in java applications
-export AWT_TOOLKIT=XToolkit
+# export AWT_TOOLKIT=XToolkit
 
 # Set background color
 xsetroot -solid "#333333"
@@ -73,7 +60,9 @@ xsetroot -solid "#333333"
 # Enable core dumps in case something goes wrong
 ulimit -c unlimited
 
+# read in Xresources
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+
 # Start i3 and log to ~/.i3/logfile
 echo "Starting at $(date)" >> ~/.i3/logfile
 exec /usr/bin/i3 >> ~/.i3/logfile
-#exec /home/lgunsch/workspace/examples/c/tinywm
