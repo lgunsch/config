@@ -1,0 +1,6 @@
+{
+    "extensions":
+    [
+        /* "py"  no syntax highlighting, disable for now till its fixed. */
+    ]
+}

@@ -1,0 +1,27 @@
+Alignment
+BracketHighlighter
+CoffeeScript
+Color Highlighter
+Cscope
+Dart
+Djaneiro
+GitGutter
+INI
+LESS
+PlainTasks
+Print to HTML
+PythonTidy
+SideBarEnhancements
+SideBarGit
+SublimeLinter
+Theme - Nexus
+Theme - Night
+Theme - Nil
+Theme - Refined
+Theme - Refresh
+Theme - Soda
+TrailingSpaces
+fish-shell
+libpeerconnection.log
+pastebin-sublime-plugin
+sublemacspro

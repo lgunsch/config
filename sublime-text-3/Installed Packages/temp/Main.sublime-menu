@@ -1,0 +1,53 @@
+[
+    {
+        "id": "file",
+        "children":
+        [
+            { "caption": "-" },
+            { "caption": "Print Entire File", "command": "print_file" },
+            { "caption": "Print Selection", "command": "print_selection" },
+            { "caption": "Print Clipboard", "command": "print_clipboard" }
+        ]
+    },
+    {
+        "id": "preferences",
+        "children":
+        [
+            {
+                "id": "package-settings",
+                "children":
+                [
+                    {
+                        "caption": "SublimePrint",
+                        "children":
+                        [
+                            {
+                                "command": "open_file", "args":
+                                {
+                                    "file": "${packages}/Simple Print Function/README.md"
+                                },
+                                "caption": "README"
+                            },
+                            { "caption": "-" },
+                            {
+                                "command": "open_file", "args":
+                                {
+                                    "file": "${packages}/Simple Print Function/SublimePrint.sublime-settings"
+                                },
+                                "caption": "Settings – Default"
+                            },
+                            {
+                                "command": "open_file", "args":
+                                {
+                                    "file": "${packages}/User/SublimePrint.sublime-settings"
+                                },
+                                "caption": "Settings – User"
+                            },
+                            { "caption": "-" }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

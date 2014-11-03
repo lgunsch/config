@@ -1,0 +1,10 @@
+[
+    // Allow toggle between beginning of line and beginning of text
+    { "keys": ["ctrl+a"], "command": "move_to", "args": {"to": "hardbol"} },
+    { "keys": ["ctrl+a"], "command": "move_to", "args": {"to": "bol"}, "context":    
+    [
+      { "key": "preceding_text", "operator": "regex_match", "operand": "^$", "match_all": true }
+    ]
+  }
+
+]

@@ -1,0 +1,38 @@
+{
+	"installed_packages":
+	[
+		"Alignment",
+		"Better CoffeeScript",
+		"Boron Color Scheme",
+		"BracketHighlighter",
+		"Color Highlighter",
+		"ColorSchemeSelector",
+		"Dart",
+		"Djaneiro",
+		"Enlightened Color Scheme",
+		"fish-shell",
+		"GitGutter",
+		"INI",
+		"LESS",
+		"Rust",
+		"SCSS",
+		"SideBarEnhancements",
+		"SideBarGit",
+		"Simple Print Function",
+		"sublemacspro",
+		"SublimeLinter",
+		"SublimeLinter-coffee",
+		"SublimeLinter-coffeelint",
+		"SublimeLinter-contrib-dartanalyzer",
+		"SublimeLinter-contrib-golint",
+		"SublimeLinter-csslint",
+		"SublimeLinter-pep8",
+		"SublimeLinter-php",
+		"SublimeLinter-phpcs",
+		"SublimeLinter-phpmd",
+		"SublimeLinter-pyflakes",
+		"SublimeLinter-pyyaml",
+		"Tomorrow Color Schemes",
+		"TrailingSpaces"
+	]
+}

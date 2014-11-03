@@ -1,0 +1,43 @@
+{
+    // The binary to be used for printing.
+    "command": "enscript",
+
+    // Option to set the title used in headers etc.
+    "title_option": "title",
+
+    // Should line numbers be printed?
+    "print_line_numbers": true,
+
+    // Cache printer names and default
+    "cache_printer_names": true,
+
+    // Should the user be propmted to choose which printer to print to?
+    "prompt_printer": false,
+
+    // Direct command line options for 'enscript'
+    "options":
+    {
+        // Line numbers starts from 1.
+        "line-numbers": 1,
+
+        // Paper type.
+        "media": "A4",
+        //"media": "Letter",
+
+        // Print in landscape mode?
+        //"landscape": "",
+
+        // Multi-column printing.
+        //"columns": 2,
+
+        // If the value of this key is empty, the language will be auto-detected
+        // from the file name.
+        // See 'enscript --help-highlight' for a list of supported languages.
+        "highlight": "",
+
+        // Other settings
+        "fancy-header": "",
+        "font": "Courier@8",
+        "tabsize": 4
+    }
+}
