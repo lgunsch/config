@@ -113,6 +113,9 @@ bindsym $mod+Shift+asterisk move workspace 8
 bindsym $mod+Shift+parenleft move workspace 9
 bindsym $mod+Shift+parenright move workspace 10
 
+# move workspace to other monitor
+bindsym $mod+m move workspace to output right
+
 # reload the configuration file
 bindsym $mod+Shift+C reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -189,7 +192,7 @@ bindsym Print exec scrot '%F_%T_$wx$h.png' -e 'mv $f ~/shots/'
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    # tray_output primary
+    tray_output primary
     status_command i3status
     colors {
         background #002B36
@@ -207,6 +210,13 @@ bar {
 
 workspace_auto_back_and_forth no
 
+# i3-theme variable is below
+# client.class          border  backgr. text    indicator
+client.focused          #268bd2 #268bd2 #fdf6e3 #34a1ea
+client.focused_inactive #516369 #516369 #fdf6e3 #657B83
+client.unfocused        #073642 #073642 #eee8d5 #073642
+client.urgent           #DC322F #DC322F #fdf6e3 #DC322F
+
 # Startup apps
 exec --no-startup-id compton -cfb -I 0.1 -O 0.1  # provides transparency & shadoows
 exec_always --no-startup-id volumeicon
@@ -218,10 +228,5 @@ exec_always --no-startup-id dropboxd start
 exec --no-startup-id unclutter -idle 1 -root
 exec --no-startup-id xset dpms 300
 
-# i3-theme variable is below
-# client.class          border  backgr. text    indicator
-client.focused          #268bd2 #268bd2 #fdf6e3 #34a1ea
-client.focused_inactive #516369 #516369 #fdf6e3 #657B83
-client.unfocused        #073642 #073642 #eee8d5 #073642
-client.urgent           #DC322F #DC322F #fdf6e3 #DC322F
 exec_always --no-startup-id xsetroot -solid "#073642"
+exec feh --no-xinerama --bg-tile ~/wallpapers/wallpaper.png
