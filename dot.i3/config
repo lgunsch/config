@@ -224,9 +224,8 @@ exec_always --no-startup-id parcellite
 # exec_always --no-startup-id wicd-client
 exec_always --no-startup-id dropboxd start
 
-# Below should not be needed. It should be done by startx automatically
-exec --no-startup-id unclutter -idle 1 -root
-exec --no-startup-id xset dpms 300
-
-exec_always --no-startup-id xsetroot -solid "#073642"
-exec feh --no-xinerama --bg-tile ~/wallpapers/wallpaper.png
+# These are performed in ~/.xinitrc
+# exec --no-startup-id unclutter -idle 1 -root                 # turn off mouse when idle
+# exec --no-startup-id xset dpms 300                           # disable screen when idle
+# exec --no-startup-id xsetroot -solid "#073642"               # set background color
+# exec feh --no-xinerama --bg-tile ~/wallpapers/wallpaper.png  # set background image
