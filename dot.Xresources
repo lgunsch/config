@@ -1,9 +1,19 @@
 ! copy/paste clipboard integration
 ! requires xsel to be installed
-URxvt.perl-ext-common:default,clipboard
+URxvt.perl-ext-common:default,clipboard,font-size
 URxvt.keysym.M-c:   perl:clipboard:copy
 URxvt.keysym.M-v:   perl:clipboard:paste
 URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+
+! Font resize
+URxvt.keysym.C-Up:      perl:font-size:increase
+URxvt.keysym.C-Down:    perl:font-size:decrease
+URxvt.keysym.C-S-Up:    perl:font-size:incglobal
+URxvt.keysym.C-S-Down:  perl:font-size:decglobal
+
+! Disable keycap picture insert mode
+URxvt.keysym.iso14755: false
+URxvt.keysym.iso14755_52: false
 
 ! primary overwrites clipboard
 URxvt.clipboard.autocopy: true
