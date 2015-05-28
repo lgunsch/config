@@ -32,6 +32,8 @@ fi
 # read in Xresources
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
+export BROWSER=google-chrome-stable
+
 xsetroot -solid "#073642"   # background color
 sh ~/.fehbg                 # background image
 xset dpms 300               # turn off the screen at 300s
