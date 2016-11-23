@@ -54,6 +54,19 @@ function vf --description "VirtualFish: fish plugin to manage virtualenvs"
 	set -l funcname "__vf_$sc"
 	set -l scargs
 
+	if test (count $argv) -eq 0
+		# If called without arguments, print usage
+		echo "Usage: vf <command> [<args>]"
+		echo
+		echo "Available commands:"
+		echo
+		for sc in (functions -a | sed -n '/__vf_/{s///g;p;}')
+			set -l helptext (functions "__vf_$sc" | head -n 1 | sed -E "s|.*'(.*)'.*|\1|")
+			printf "    %-15s %s\n" $sc (set_color 555)$helptext(set_color normal)
+		end
+		return
+	end
+
 	if test (count $argv) -gt 1
 		set scargs $argv[2..-1]
 	end
@@ -82,10 +95,13 @@ function __vf_activate --description "Activate a virtualenv"
 		vf deactivate
 	end
 
+    # Set VIRTUAL_ENV before the others so that the will_activate event knows
+    # which virtualenv is about to be activated
+	set -gx VIRTUAL_ENV $VIRTUALFISH_HOME/$argv[1]
+
 	emit virtualenv_will_activate
 	emit virtualenv_will_activate:$argv[1]
 
-	set -gx VIRTUAL_ENV $VIRTUALFISH_HOME/$argv[1]
 	set -g _VF_EXTRA_PATH $VIRTUAL_ENV/bin
 	set -gx PATH $_VF_EXTRA_PATH $PATH
 
@@ -180,15 +196,6 @@ function __vf_cdpackages --description "Change to the site-packages directory of
 	cd lib/python*/site-packages
 end
 
-
-function __vf_connect --description "Connect this virtualenv to the current directory"
-	if set -q VIRTUAL_ENV
-		basename $VIRTUAL_ENV > $VIRTUALFISH_ACTIVATION_FILE
-	else
-		echo "No virtualenv is active."
-	end
-end
-
 function __vf_tmp --description "Create a temporary virtualenv that will be removed when deactivated"
 	set -l env_name (printf "%s%.4x" "tempenv-" (random) (random) (random))
     set -g VF_TEMPORARY_ENV
@@ -248,6 +255,22 @@ function __vf_addpath --description "Adds a path to sys.path in this virtualenv"
 	end
 end
 
+# 'vf connect' command
+# Used by the project management and auto-activation plugins
+
+if not set -q VIRTUALFISH_ACTIVATION_FILE
+    set -g VIRTUALFISH_ACTIVATION_FILE .venv
+end
+
+
+function __vf_connect --description "Connect this virtualenv to the current directory"
+    if set -q VIRTUAL_ENV
+        basename $VIRTUAL_ENV > $VIRTUALFISH_ACTIVATION_FILE
+    else
+        echo "No virtualenv is active."
+    end
+end
+
 ################
 # Autocomplete
 # Based on https://github.com/zmalltalker/fish-nuggets/blob/master/completions/git.fish
@@ -283,4 +306,3 @@ begin
         complete -x -c rmvirtualenv -a "(vf ls)"
     end
 end
-

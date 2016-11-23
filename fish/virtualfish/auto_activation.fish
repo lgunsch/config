@@ -1,10 +1,6 @@
 ################
 # Automatic activation
 
-if not set -q VIRTUALFISH_ACTIVATION_FILE
-    set -g VIRTUALFISH_ACTIVATION_FILE .venv
-end
-
 function __vfsupport_auto_activate --on-variable PWD
     if status --is-command-substitution
         return
