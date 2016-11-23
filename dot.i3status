@@ -1,5 +1,4 @@
 general {
-#        output_format = "dzen2"
         output_format = "i3bar"
         colors = true
         interval = 5
@@ -7,25 +6,23 @@ general {
 
 # order += "ipv6"
 order += "disk /"
-# order += "disk /backup/"
 # order += "run_watch DHCP"
 # order += "run_watch VPN"
-order += "wireless wlo1"
-order += "ethernet enp0s25"
+order += "wireless wlp58s0"
+order += "ethernet net1"
 order += "battery 0"
-order += "cpu_temperature 0"
 order += "cpu_temperature 1"
 order += "cpu_temperature 2"
-# order += "cpu_temperature 3"
+order += "cpu_temperature 3"
 order += "load"
 order += "time"
 
-wireless wlo1 {
+wireless wlp58s0 {
        format_up = "W: (%quality at %essid, %bitrate) %ip"
        format_down = "W: down"
 }
 
-ethernet enp0s25 {
+ethernet net1 {
        # if you use %speed, i3status requires the cap_net_admin capability
        format_up = " E: %ip (%speed) "
        format_down = " E: down "
@@ -33,7 +30,11 @@ ethernet enp0s25 {
 
 battery 0 {
        format = "%status %percentage %remaining"
+       status_chr = "⚇ CHR"
+       status_bat = "⚡ BAT"
+       status_full = "☻ FULL"
        path = "/sys/class/power_supply/BAT%d/uevent"
+       low_threshold = 10
 }
 
 run_watch DHCP {
@@ -45,33 +46,25 @@ run_watch VPN {
 }
 
 time {
-       format = " %A %Y-%m-%d %H:%M:%S"
+       format = " %a %b %d %H:%M:%S"
 }
 load {
        format = " %1min %5min "
 }
 
-cpu_temperature 0 {
-       format = " %degrees°C"
-       path = "/sys/devices/platform/coretemp.0/hwmon/hwmon0/temp2_input"
-}
 cpu_temperature 1 {
        format = "%degrees°C"
-       path = "/sys/devices/platform/coretemp.0/hwmon/hwmon0/temp3_input"
+       path = "/sys/devices/platform/coretemp.0/hwmon/hwmon0/temp1_input"
 }
 cpu_temperature 2 {
        format = "%degrees°C"
-       path = "/sys/devices/platform/coretemp.0/hwmon/hwmon0/temp4_input"
+       path = "/sys/devices/platform/coretemp.0/hwmon/hwmon0/temp2_input"
 }
 cpu_temperature 3 {
        format = "%degrees°C "
-       path = "/sys/devices/platform/coretemp.0/temp5_input"
+       path = "/sys/devices/platform/coretemp.0/hwmon/hwmon0/temp3_input"
 }
 
 disk "/" {
        format = " %free free, %used of %total "
-}
-
-disk "/backup/" {
-       format = "Backup:  %free free, %used of %total "
 }
