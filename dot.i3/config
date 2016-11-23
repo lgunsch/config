@@ -178,6 +178,16 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+mode "conkeror" {
+	bindsym u exec conkeror -f unfocus; mode default
+
+	# back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+c mode "conkeror"
+
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
@@ -219,12 +229,10 @@ client.urgent           #DC322F #DC322F #fdf6e3 #DC322F
 
 # Startup apps
 exec --no-startup-id compton -cfb -I 0.1 -O 0.1  # provides transparency & shadoows
-exec_always --no-startup-id volumeicon
 exec_always --no-startup-id parcellite
-# exec_always --no-startup-id wicd-client
-exec_always --no-startup-id dropboxd start
 
 # These are performed in ~/.xinitrc
+# exec_always --no-startup-id volumeicon
 # exec --no-startup-id unclutter -idle 1 -root                 # turn off mouse when idle
 # exec --no-startup-id xset dpms 300                           # disable screen when idle
 # exec --no-startup-id xsetroot -solid "#073642"               # set background color
