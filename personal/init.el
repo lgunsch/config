@@ -1,5 +1,6 @@
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/"))
 
 
 (setq prelude-theme 'monokai-theme)
@@ -22,6 +23,11 @@
 (with-eval-after-load 'cperl-mode
   (add-hook 'smartparens-enabled-hook  (lambda () (define-key cperl-mode-map "{" nil)))
   (add-hook 'smartparens-disabled-hook  (lambda () (define-key cperl-mode-map "{" 'cperl-electric-lbrace))))
+
+;; Bootstrap `use-package'
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
 (use-package neotree
   :ensure t
