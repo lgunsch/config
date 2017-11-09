@@ -16,6 +16,7 @@ order += "cpu_temperature 2"
 order += "cpu_temperature 3"
 order += "load"
 order += "time"
+order += "volume master"
 
 wireless wlp58s0 {
        format_up = "W: (%quality at %essid, %bitrate) %ip"
@@ -67,4 +68,11 @@ cpu_temperature 3 {
 
 disk "/" {
        format = " %free free, %used of %total "
+}
+
+volume master {
+       format = "♪: %volume"
+       format_muted = "♪: muted (%volume)"
+       device = "pulse:alsa_output.pci-0000_00_14.2.analog-stereo"
+       min_width = 75
 }

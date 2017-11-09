@@ -41,7 +41,6 @@ unclutter -idle 1 -root &   # turn off mouse when idle for 1s
 urxvtd -q -f -o             # start urxvtd server with current display
 twmnd &                     # start tiling window manager notification daemon
 dropbox &                   # start dropbox
-volumeicon &                # start volumeicon
 
 echo "=== Starting at $(date)" >> ~/.i3/logfile
 exec /usr/bin/i3 -V 2>&1 >> ~/.i3/logfile

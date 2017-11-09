@@ -192,9 +192,9 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # Special keys
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 10%+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 10%- unmute
-bindsym XF86AudioMute exec amixer -q set Master toggle
+bindsym XF86AudioRaiseVolume exec pamixer -i 5 -u
+bindsym XF86AudioLowerVolume exec pamixer -d 5
+bindsym XF86AudioMute exec pamixer -t
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 -time 100
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 -time 100
 bindsym Print exec scrot '%F_%T_$wx$h.png' -e 'mv $f ~/shots/'
@@ -204,6 +204,7 @@ bindsym Print exec scrot '%F_%T_$wx$h.png' -e 'mv $f ~/shots/'
 bar {
     tray_output primary
     status_command i3status
+#    status_command i3status-rs /home/lgunsch/.config/i3/status.toml
     colors {
         background #002B36
         statusline #eee8d5
@@ -232,7 +233,6 @@ exec --no-startup-id compton -cfb -I 0.1 -O 0.1  # provides transparency & shado
 exec_always --no-startup-id parcellite
 
 # These are performed in ~/.xinitrc
-# exec_always --no-startup-id volumeicon
 # exec --no-startup-id unclutter -idle 1 -root                 # turn off mouse when idle
 # exec --no-startup-id xset dpms 300                           # disable screen when idle
 # exec --no-startup-id xsetroot -solid "#073642"               # set background color
