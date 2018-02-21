@@ -8,17 +8,17 @@ general {
 order += "disk /"
 # order += "run_watch DHCP"
 # order += "run_watch VPN"
-order += "wireless wlp58s0"
-order += "ethernet net1"
+order += "wireless wlp4s0"
+# order += "ethernet net1"
 order += "battery 0"
 order += "cpu_temperature 1"
-order += "cpu_temperature 2"
-order += "cpu_temperature 3"
+# order += "cpu_temperature 2"
+# order += "cpu_temperature 3"
 order += "load"
 order += "time"
 order += "volume master"
 
-wireless wlp58s0 {
+wireless wlp4s0 {
        format_up = "W: (%quality at %essid, %bitrate) %ip"
        format_down = "W: down"
 }
@@ -55,15 +55,15 @@ load {
 
 cpu_temperature 1 {
        format = "%degrees°C"
-       path = "/sys/devices/platform/coretemp.0/hwmon/hwmon0/temp1_input"
+       path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input"
 }
 cpu_temperature 2 {
        format = "%degrees°C"
-       path = "/sys/devices/platform/coretemp.0/hwmon/hwmon0/temp2_input"
+       path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp2_input"
 }
 cpu_temperature 3 {
        format = "%degrees°C "
-       path = "/sys/devices/platform/coretemp.0/hwmon/hwmon0/temp3_input"
+       path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp3_input"
 }
 
 disk "/" {

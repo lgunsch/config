@@ -23,6 +23,7 @@ floating_modifier $mod
 
 # start a terminal, bash is default to set up the env, then fish is exec'ed after.
 bindsym $mod+Return exec urxvt -e fish
+# bindsym $mod+Return exec urxvt -e /bin/bash
 
 # kill focused window
 bindsym $mod+Shift+Q kill
@@ -35,8 +36,8 @@ bindsym $mod+p exec i3-dmenu-desktop
 bindsym $mod+b  exec --no-startup-id /home/lgunsch/.i3/mouse-banish.py '.*Razer  Razer Abyssus.*'
 
 # Lock the screen
-bindsym $mod+l exec i3lock --tiling --image=/home/lgunsch/wallpapers/wallpaper.png
-bindsym $mod+Shift+l exec i3lock --dpms --tiling --image=/home/lgunsch/wallpapers/wallpaper.png
+bindsym $mod+l exec i3lock --tiling --image=/home/lgunsch/wallpapers/lock-wallpaper.png
+bindsym $mod+Shift+l exec i3lock --dpms --tiling --image=/home/lgunsch/wallpapers/lock-wallpaper.png
 
 # change focus
 bindsym $mod+n focus left
@@ -232,8 +233,5 @@ client.urgent           #DC322F #DC322F #fdf6e3 #DC322F
 exec --no-startup-id compton -cfb -I 0.1 -O 0.1  # provides transparency & shadoows
 exec_always --no-startup-id parcellite
 
-# These are performed in ~/.xinitrc
-# exec --no-startup-id unclutter -idle 1 -root                 # turn off mouse when idle
-# exec --no-startup-id xset dpms 300                           # disable screen when idle
-# exec --no-startup-id xsetroot -solid "#073642"               # set background color
-# exec feh --no-xinerama --bg-tile ~/wallpapers/wallpaper.png  # set background image
+exec --no-startup-id unclutter -idle 1 -root                 # turn off mouse when idle
+exec --no-startup-id twmnd                                   # notification daemon

@@ -1,22 +1,13 @@
 ! copy/paste clipboard integration
 ! requires xsel to be installed
-URxvt.perl-ext-common:default,clipboard,font-size
-URxvt.keysym.M-c:   perl:clipboard:copy
-URxvt.keysym.M-v:   perl:clipboard:paste
-URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
-
-! Font resize
-URxvt.keysym.C-Up:      perl:font-size:increase
-URxvt.keysym.C-Down:    perl:font-size:decrease
-URxvt.keysym.C-S-Up:    perl:font-size:incglobal
-URxvt.keysym.C-S-Down:  perl:font-size:decglobal
+URxvt.perl-ext-common:resize-font,selection-to-clipboard
 
 ! Disable keycap picture insert mode
 URxvt.keysym.iso14755: false
 URxvt.keysym.iso14755_52: false
 
 ! primary overwrites clipboard
-URxvt.clipboard.autocopy: true
+! URxvt.clipboard.autocopy: true
 
 ! Molokai theme
 URxvt*background: #141414
@@ -42,8 +33,14 @@ URxvt*transparent: true
 URxvt*shading: 40
 URxvt*fading: 40
 
-! URxvt*font: xft:Inconsolata:pixelsize=14
-URxvt*font: xft:Hermit:pixelsize=12.5
+! Query with `xdpyinfo | grep dots`
+Xft.dpi: 96
+
+! Make sure to use rxvt-unicode-patched for proper fixed-with support
+URxvt*font: xft:Anonymous Pro:size=14:antialias=true:hinting=true
+!URxvt*font: xft:Inconsolata:pixelsize=18
+! URxvt*font: xft:Hermit:pixelsize=12.5
+! URxvt*font: xft:Adobe Source Code Pro=13
 
 URxvt*scrollBar: true
 URxvt*scrollBar_right: true
