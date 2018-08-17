@@ -76,3 +76,7 @@
 (use-package indent-tools
   :ensure t
   :bind ("C-c >" . indent-tools-hydra/body))
+
+; configure Org Mode
+(setq org-todo-keywords
+      '((sequence "TODO" "IN-PROGRESS" "CODE-REVIEW" "TESTING" "DONE")))

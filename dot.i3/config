@@ -115,7 +115,7 @@ bindsym $mod+Shift+parenleft move workspace 9
 bindsym $mod+Shift+parenright move workspace 10
 
 # move workspace to other monitor
-bindsym $mod+m move workspace to output right
+bindsym $mod+m move workspace to output up
 
 # reload the configuration file
 bindsym $mod+Shift+C reload

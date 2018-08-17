@@ -1,11 +1,12 @@
 [user]
 	name = Lewis Gunsch
-	email = lgunsch@strathcom.com
+	email = lewis@gunsch.ca
 [color]
 	diff = true
 	grep = true
 [alias]
-	hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+	hist = log -n 50 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+	fullhist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 	tip = log  -n 1 --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	up = "!git remote update -p; git merge --ff-only @{u}"
 

@@ -1,0 +1,12 @@
+[Unit]
+Description=Emacs: the extensible, self-documenting text editor
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/emacs --daemon
+ExecStop=/usr/bin/emacsclient --eval "(kill-emacs)"
+Restart=always
+Environment="PATH=/home/lgunsch/.cargo/bin:/home/lgunsch/bin:/home/lgunsch/gocode/bin:/usr/lib/ccache/bin:/bin:/usr/bin:/usr/bin:/usr/ucb:/usr/local/sbin:/usr/local/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
+
+[Install]
+WantedBy=default.target
