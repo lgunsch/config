@@ -1,0 +1,2 @@
+# OnePlus 3 A3000: idVendor=05c6, idProduct=676c, bcdDevice= 3.18
+SUBSYSTEM=="usb", ATTR{idVendor}=="05c6", USER="lgunsch"
