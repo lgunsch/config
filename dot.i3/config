@@ -199,6 +199,7 @@ bindsym XF86AudioMute exec pamixer -t
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 -time 100
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 -time 100
 bindsym Print exec scrot '%F_%T_$wx$h.png' -e 'mv $f ~/shots/'
+# bindsym XF86WakeUp exec /home/lgunsch/bin/keyboard-light.py
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
