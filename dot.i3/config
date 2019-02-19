@@ -33,11 +33,10 @@ bindsym $mod+d exec dmenu_run
 bindsym $mod+p exec i3-dmenu-desktop
 
 # Toggle the mouse to be enabled/disabled using a script
-bindsym $mod+b  exec --no-startup-id /home/lgunsch/.i3/mouse-banish.py '.*Razer  Razer Abyssus.*'
+# bindsym $mod+b  exec --no-startup-id /home/lgunsch/.i3/mouse-banish.py '.*Razer  Razer Abyssus.*'
 
 # Lock the screen
 bindsym $mod+l exec i3lock --tiling --image=/home/lgunsch/wallpapers/lock-wallpaper.png
-bindsym $mod+Shift+l exec i3lock --dpms --tiling --image=/home/lgunsch/wallpapers/lock-wallpaper.png
 
 # change focus
 bindsym $mod+n focus left
@@ -115,7 +114,7 @@ bindsym $mod+Shift+parenleft move workspace 9
 bindsym $mod+Shift+parenright move workspace 10
 
 # move workspace to other monitor
-bindsym $mod+m move workspace to output up
+bindsym $mod+m move workspace to output right
 
 # reload the configuration file
 bindsym $mod+Shift+C reload
