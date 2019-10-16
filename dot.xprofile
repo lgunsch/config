@@ -1,0 +1,37 @@
+#!/bin/sh
+#
+# ~/.xinitrc
+#
+# Executed by startx (run your window manager from here)
+
+# Enable zapping (C-A-<Bksp> kills X)
+# setxkbmap us -variant colemak -option terminate:ctrl_alt_bksp -option ctrl:nocaps
+
+# Enable core dumps in case something goes wrong
+ulimit -c unlimited
+
+# Set up screens and set background
+if [ `xrandr | grep -v disconnected | grep -c connected` -eq 3 ]; then # tripple-monitor
+    xrandr --output eDP-1-1 --auto --output DP-1 --auto --left-of eDP-1-1 --output DP-0 --auto --primary --left-of DP-1
+elif [ `xrandr | grep -v disconnected | grep -c connected` -eq 2 ]; then # double-monitor
+    xrandr --output eDP-1-1 --auto --output DP-0 --auto --primary --left-of eDP-1-1
+else
+    xrandr --output eDP1 --auto --primary
+fi
+
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+  for f in /etc/X11/xinit/xinitrc.d/*; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
+fi
+
+# read in Xresources, do not ever background xrdb
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+
+export BROWSER=google-chrome-stable
+
+xset dpms 600               # turn off the screen at 10 mins
+xsetroot -solid "#073642"   # background color
+sh ~/.fehbg                 # background image
+urxvtd -q -f -o             # start urxvtd server with current display
