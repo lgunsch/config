@@ -9,6 +9,7 @@
 ;; mode line settings
 (line-number-mode t)
 (column-number-mode t)
+(global-display-line-numbers-mode t)
 
 ;; make the fringe (gutter) smaller
 ;; the argument is a width in pixels (the default is 8)
@@ -34,12 +35,14 @@
   :ensure t
   :hook yaml-mode)
 
-
 (use-package avy
   :ensure t
   :bind (
          ("C-:" . avy-goto-char)
          ("C-'" . avy-goto-char-2)))
+
+(use-package dockerfile-mode
+  :ensure t)
 
 (use-package neotree
   :ensure t
@@ -76,6 +79,15 @@
 (use-package indent-tools
   :ensure t
   :bind ("C-c >" . indent-tools-hydra/body))
+
+(use-package highlight-indent-guides
+  :ensure t
+  :init
+  (setq highlight-indent-guides-method 'character)
+  :hook
+  ((prog-mode . highlight-indent-guides-mode)
+   (yaml-mode . highlight-indent-guides-mode)
+   (ansible-mode)))
 
 ; configure Org Mode
 (setq org-todo-keywords
