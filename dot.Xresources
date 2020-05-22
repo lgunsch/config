@@ -37,7 +37,9 @@ URxvt*fading: 40
 Xft.dpi: 96
 
 ! Make sure to use rxvt-unicode-patched for proper fixed-with support
-URxvt*font: xft:Anonymous Pro:size=14:antialias=true:hinting=true
+URxvt*font: xft:Cascadia Code:size=11:antialias=true:hinting=true
+! URxvt*font: xft:Anonymous Pro:size=14:antialias=true:hinting=true
+! URxvt*font: xft:Jetbrains Mono:size=14:antialias=true:hinting=true
 !URxvt*font: xft:Inconsolata:pixelsize=18
 ! URxvt*font: xft:Hermit:pixelsize=12.5
 ! URxvt*font: xft:Adobe Source Code Pro=13
