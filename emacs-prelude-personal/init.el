@@ -4,7 +4,7 @@
 
 
 (setq prelude-theme 'monokai-theme)
-(setq default-frame-alist '((font . "Anonymous Pro 14")))
+(setq default-frame-alist '((font . "Cascadia Code 12")))
 
 ;; mode line settings
 (line-number-mode t)
@@ -17,7 +17,7 @@
     (fringe-mode 24))
 
 ;; default indents for modes
-(setq yaml-indent-offset 4)
+(setq yaml-indent-offset 2)
 
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
@@ -42,6 +42,14 @@
          ("C-'" . avy-goto-char-2)))
 
 (use-package dockerfile-mode
+  :ensure t)
+
+(use-package json-mode
+  :ensure t
+  :custom
+  (json-reformat:indent-width 2))
+
+(use-package jsonnet-mode
   :ensure t)
 
 (use-package neotree
@@ -87,6 +95,8 @@
   :hook
   ((prog-mode . highlight-indent-guides-mode)
    (yaml-mode . highlight-indent-guides-mode)
+   (jsonnet-mode . highlight-indent-guides-mode)
+   (json-mode . highlight-indent-guides-mode)
    (ansible-mode)))
 
 ; configure Org Mode
