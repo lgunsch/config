@@ -4,7 +4,10 @@
 
 
 (setq prelude-theme 'monokai-theme)
-(setq default-frame-alist '((font . "Cascadia Code 12")))
+(setq default-frame-alist '((font . "Cascadia Code-13")))
+;; (setq default-frame-alist '((font . "Source Code Pro-13")))
+;; (add-to-list 'default-frame-alist
+;;             '(font . "Cascadia Code-13:antialias=true:hinting=true"))
 
 ;; mode line settings
 (line-number-mode t)
