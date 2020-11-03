@@ -22,8 +22,9 @@ font pango:Droid Serif 10.5
 floating_modifier $mod
 
 # start a terminal, bash is default to set up the env, then fish is exec'ed after.
-bindsym $mod+Return exec urxvt -e fish
+#bindsym $mod+Return exec urxvt -e fish
 # bindsym $mod+Return exec urxvt -e /bin/bash
+bindsym $mod+Return exec alacritty -e fish
 
 # kill focused window
 bindsym $mod+Shift+Q kill
@@ -178,16 +179,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-mode "conkeror" {
-	bindsym u exec conkeror -f unfocus; mode default
-
-	# back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-bindsym $mod+c mode "conkeror"
-
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
@@ -230,9 +221,8 @@ client.unfocused        #073642 #073642 #eee8d5 #073642
 client.urgent           #DC322F #DC322F #fdf6e3 #DC322F
 
 # Startup apps
-exec --no-startup-id compton -cfb -I 0.1 -O 0.1  # provides transparency & shadoows
+exec --no-startup-id picom  # provides transparency & shadoows
 exec_always --no-startup-id parcellite
 
 exec --no-startup-id unclutter -idle 1 -root                 # turn off mouse when idle
-exec --no-startup-id twmnd                                   # notification daemon
-exec optimus-manager-qt
+#exec --no-startup-id twmnd                                   # notification daemon
