@@ -223,6 +223,7 @@ client.urgent           #DC322F #DC322F #fdf6e3 #DC322F
 # Startup apps
 exec --no-startup-id picom  # provides transparency & shadoows
 exec_always --no-startup-id parcellite
+exec --no-startup-id pasystray
 
 exec --no-startup-id unclutter -idle 1 -root                 # turn off mouse when idle
 #exec --no-startup-id twmnd                                   # notification daemon
