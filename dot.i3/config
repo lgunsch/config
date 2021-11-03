@@ -220,6 +220,8 @@ client.focused_inactive #516369 #516369 #fdf6e3 #657B83
 client.unfocused        #073642 #073642 #eee8d5 #073642
 client.urgent           #DC322F #DC322F #fdf6e3 #DC322F
 
+for_window [all] title_window_icon on
+
 # Startup apps
 exec --no-startup-id picom  # provides transparency & shadoows
 exec_always --no-startup-id parcellite
