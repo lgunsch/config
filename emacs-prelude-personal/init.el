@@ -105,3 +105,6 @@
 ; configure Org Mode
 (setq org-todo-keywords
       '((sequence "TODO" "IN-PROGRESS" "CODE-REVIEW" "TESTING" "DONE")))
+
+(use-package zig-mode
+  :ensure t)
