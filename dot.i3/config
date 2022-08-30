@@ -30,7 +30,9 @@ bindsym $mod+Return exec alacritty -e fish
 bindsym $mod+Shift+Q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+#bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec rofi -show drun
+bindsym $mod+Shift+d exec rofi -show run
 bindsym $mod+p exec i3-dmenu-desktop
 
 # Toggle the mouse to be enabled/disabled using a script
