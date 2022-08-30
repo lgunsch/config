@@ -1,8 +1,8 @@
 #!/bin/sh
 #
-# ~/.xinitrc
+# ~/.xsession
 #
-# Executed by startx (run your window manager from here)
+# Executed by the display manager (lightdm, gdm). Run your window manager from here.
 
 [ -f /etc/xprofile ] && . /etc/xprofile
 [ -f ~/.xprofile ] && . ~/.xprofile

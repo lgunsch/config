@@ -1,8 +1,9 @@
 #!/bin/sh
 #
-# ~/.xinitrc
+# ~/.xprofile
 #
-# Executed by startx (run your window manager from here)
+# Sourced by .xinitrc and .xsession.
+# Window manager will be run after sourcing this script.
 
 # Enable zapping (C-A-<Bksp> kills X)
 # setxkbmap us -variant colemak -option terminate:ctrl_alt_bksp -option ctrl:nocaps
@@ -11,10 +12,10 @@
 ulimit -c unlimited
 
 # Set up screens and set background
-if [ `xrandr | grep -v disconnected | grep -c connected` -eq 3 ]; then # tripple-monitor
-    xrandr --output eDP-1-1 --auto --output DP-1 --auto --left-of eDP-1-1 --output DP-0 --auto --primary --left-of DP-1
-elif [ `xrandr | grep -v disconnected | grep -c connected` -eq 2 ]; then # double-monitor
-    xrandr --output eDP-1-1 --auto --output DP-0 --auto --primary --left-of eDP-1-1
+if [ `xrandr | grep -v disconnected | grep -E '(eDP1|HDMI1)' -c` -eq 2 ]; then # double-monitor
+    xrandr --output eDP1 --auto --output HDMI1 --auto --primary --left-of eDP1
+elif [ `xrandr | grep -v disconnected | grep -E '(eDP1|DP1-2)' -c` -eq 2 ]; then # double-monitor w/ Dock
+    xrandr --output eDP1 --auto --output DP1-2 --auto --primary --left-of eDP1
 else
     xrandr --output eDP1 --auto --primary
 fi
@@ -29,9 +30,8 @@ fi
 # read in Xresources, do not ever background xrdb
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
-export BROWSER=google-chrome-stable
+export BROWSER=firefox
 
 xset dpms 600               # turn off the screen at 10 mins
 xsetroot -solid "#073642"   # background color
 sh ~/.fehbg                 # background image
-urxvtd -q -f -o             # start urxvtd server with current display
