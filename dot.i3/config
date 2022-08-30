@@ -228,4 +228,4 @@ exec_always --no-startup-id parcellite
 exec --no-startup-id pasystray
 
 exec --no-startup-id unclutter -idle 1 -root                 # turn off mouse when idle
-#exec --no-startup-id twmnd                                   # notification daemon
+exec --no-startup-id wired                                   # notification daemon
