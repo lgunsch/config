@@ -1,9 +1,8 @@
 #!/bin/sh
 #
-# ~/.xprofile
+# ~/.xinitrc
 #
-# Sourced by .xinitrc and .xsession.
-# Window manager will be run after sourcing this script.
+# Executed by startx (run your window manager from here)
 
 # Enable zapping (C-A-<Bksp> kills X)
 # setxkbmap us -variant colemak -option terminate:ctrl_alt_bksp -option ctrl:nocaps
@@ -12,12 +11,12 @@
 ulimit -c unlimited
 
 # Set up screens and set background
-if [ `xrandr | grep -v disconnected | grep -E '(eDP1|HDMI1)' -c` -eq 2 ]; then # double-monitor
-    xrandr --output eDP1 --auto --output HDMI1 --auto --primary --left-of eDP1
-elif [ `xrandr | grep -v disconnected | grep -E '(eDP1|DP1-2)' -c` -eq 2 ]; then # double-monitor w/ Dock
-    xrandr --output eDP1 --auto --output DP1-2 --auto --primary --left-of eDP1
+if [ `xrandr | grep -v disconnected | grep -c connected` -eq 3 ]; then # tripple-monitor
+    xrandr --output eDP-1 --auto --output DP-1 --auto --left-of eDP-1 --output DP-0 --auto --primary --left-of DP-1
+elif [ `xrandr | grep -v disconnected | grep -c connected` -eq 2 ]; then # double-monitor
+    xrandr --output eDP-1 --auto --output DP-1 --auto --primary --left-of eDP-1
 else
-    xrandr --output eDP1 --auto --primary
+    xrandr --output eDP-1 --auto --primary
 fi
 
 if [ -d /etc/X11/xinit/xinitrc.d ]; then
@@ -27,8 +26,10 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
+# Only urxvt used Xresources, and I now use Alacritty
+# which has it's own config file.
 # read in Xresources, do not ever background xrdb
-[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+# [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
 export BROWSER=firefox
 
