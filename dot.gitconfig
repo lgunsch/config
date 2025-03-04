@@ -1,9 +1,7 @@
 [user]
 	name = Lewis Gunsch
 	email = lewis@gunsch.ca
-[color]
-	diff = true
-	grep = true
+
 [alias]
 	hist = log -n 50 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 	fullhist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
@@ -17,5 +15,58 @@
 	generic = n move-down
 	generic = e move-up
 
+[core]
+	pager = delta
+
+[column]
+	ui = auto
+
+[branch]
+	sort = -committerdate
+
+[tag]
+	sort = version:refname
+
+[interactive]
+	diffFilter = delta --color-only
+
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+
+[delta]
+	navigate = true    # use n and N to move between diff sections
+    # delta detects terminal colors automatically; set one of these to disable auto-detection
+    # dark = true
+    # light = true
+
+[color]
+	diff = true
+	grep = true
+
+[merge]
+	conflictstyle = zdiff3
+
 [push]
 	default = simple
+	autoSetupRemote = true
+	followTags = true
+
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+
+[url "ssh://git@github.com/levven-com/"]
+	insteadOf = https://github.com/levven-com/
+
+[init]
+	defaultBranch = master
+
+[safe]
+	directory = /opt/flutter
+
+[rebase]
+	updateRefs = true
