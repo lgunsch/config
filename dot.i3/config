@@ -16,7 +16,8 @@ set $mod Mod4
 
 # font for window titles. ISO 10646 = Unicode
 # font pango:Bitstream Charter 11
-font pango:Droid Serif 10.5
+#font pango:Droid Serif 10.5
+font pango:B612-Regular 10.5
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -185,11 +186,11 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # Special keys
-bindsym XF86AudioRaiseVolume exec pamixer -i 5 -u
-bindsym XF86AudioLowerVolume exec pamixer -d 5
-bindsym XF86AudioMute exec pamixer -t
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 -time 100
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 -time 100
+bindsym XF86AudioRaiseVolume exec wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 10
 bindsym Print exec scrot '%F_%T_$wx$h.png' -e 'mv $f ~/shots/'
 # bindsym XF86WakeUp exec /home/lgunsch/bin/keyboard-light.py
 
@@ -231,3 +232,5 @@ exec --no-startup-id pasystray
 
 exec --no-startup-id unclutter -idle 1 -root                 # turn off mouse when idle
 exec --no-startup-id wired                                   # notification daemon
+exec --no-startup-id Truple.AppImage
+exec --no-startup-id /usr/bin/dropbox
